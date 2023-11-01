@@ -1,0 +1,72 @@
+<%- include("partials/header.ejs") %>
+
+<section id="user-info">
+    <% if (locals.userName) { %>
+        <h1>Hello, <%- userName %>, let's get started!</h1>
+        <h2>Tell me a little bit more about yourself</h2>
+        <div class="mb-4" style="width: 30rem; height: 20px; border-bottom: 1px solid black; opacity:0.2; text-align: center; margin:0 auto">
+            <span style="font-size: 20px; background-color: white; padding: 0 10px;">
+              or <!--Padding is optional-->
+            </span>
+        </div>
+        <h2 class="mb-3">Choose a topic.</h2>
+        <form action="/user-topic" id="autoform" method="post" style="display:flex; flex-direction:column">
+            <div class="mb-3" style="align-items:center">
+                <input class="form-control col-3 mb-3" list="categorydata" id="categories" name="category" size="50" autocomplete="off" placeholder="Type and choose a topic."/>
+                <input class="form-control col-3 mb-3" list="topicdata" id="topics" name="topic" size="50" autocomplete="off" placeholder="Type and choose and article." />
+                <input class="btn btn-outline-success col-1.5 mb-3" type="submit" value="Submit">
+            </div>
+        </form>
+        <div class="mb-4" style="width: 30rem; height: 20px; border-bottom: 1px solid black; opacity:0.2; text-align: center; margin:0 auto">
+            <span style="font-size: 20px; background-color: white; padding: 0 10px;">
+              or <!--Padding is optional-->
+            </span>
+        </div>
+        <h2>Enter a topic you're interested in.</h2>
+        <form action="/user-keyword" method="post" style="display:flex; flex-direction:column">
+            <div class="mb-3" style="align-items:center">
+                <label for="keyword" style="margin-bottom: 10px;"> Enter keyword for your topic:</label>
+                <input class="form-control  col-3" type="text" name="keyword" id="keyword" placeholder="e.g., loved one, teen, STD.">
+            </div>
+            <input class="btn btn-outline-success col-1.5 mb-3" type="submit" value="Submit">
+        </form>
+    <% } %>
+</section>
+
+<section id="result">
+<% if (locals.data) { %>
+    <% for( let index = 0; index < data.length; index++ ) { %>
+        <div class="row  d-flex flex-wrap justify-content-center">
+            <div class="card col-lg-8 col-md-8 col-sm-10">
+                <div class="card-body">
+                    <h1 class="card-title"><%= data[index].Title %></h1>
+                    <div class="card-content">
+                        <%- data[index].Sections.section[0].Content %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+<% } %>
+</section>
+
+<% if (locals.categories) { %>
+    <datalist id="categorydata">
+        <% categories.forEach(element => { %>
+            <option><%= element %></option>
+        <% }) %>
+    </datalist>
+<% } %>
+
+<% if (locals.topics) { %>
+    <datalist id="topicdata">
+        <% topics.forEach(element => { %>
+            <option><%= element %></option>
+        <% }) %>
+    </datalist>
+    
+<% } %>
+
+
+
+<%- include("partials/footer.ejs") %>

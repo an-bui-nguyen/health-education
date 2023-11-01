@@ -1,0 +1,72 @@
+html, body { height: 100% }
+
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#welcome-child {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    justify-content: center;
+    text-align: center;
+}
+
+#welcome-child > * {
+    align-items: center;
+}
+
+.card-body h2, .card-body h3, .card-body h4 {
+    font-size: large;
+}
+
+.card-body h1 {
+    font-size: x-large;
+}
+
+.card-body{
+    display:flex;
+    flex-direction: row;
+}
+
+.card-title{
+    align-items: flex-start;
+    width:30%;
+}
+
+.card-content{
+    align-items: flex-end;
+    width: 70%;
+    padding-left: 2rem;
+}
+
+.card{
+    margin-bottom: 3rem;
+}
+
+#user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#user-info * {
+    align-items: center;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+input {
+    text-align: center;
+}
+
+#keyword {
+    text-align:left;
+}
+

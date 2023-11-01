@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+  <section id="welcome-section">
+    <div id="welcome-child">
+      <img class="d-block mx-auto mb-2" src="/assets/health-health.png" alt="" width="100" height="100">
+      <div class="col-lg-6 col-md-8 col-sm-8 mx-auto">
+        <h1>Hello, my name is Healthify, and your name is...?</h1>
+      </div>
+      <form action="/getting-started" method="post" style="display:flex; flex-direction:column">
+        <div class="mb-3 col-lg-2 col-sm-4" style="align-items:center">
+          <input class="form-control" type="text" name="userName" id="userName" placeholder="Enter your name here">
+        </div>
+        <input class="btn btn-outline-success" type="submit" value="Submit">
+      </form>
+    </div>
+  </section>
+
+<%- include("partials/footer.ejs") %>
