@@ -87,6 +87,7 @@ app.post("/getting-started", (req, res) => {
   res.render("user-info.ejs", {userName:userName, categories:categoriesList, topics:topicList})
 })
 
+
 app.post("/user-topic", async (req, res) => {
   const topic = topicArray[req.body.topic];
   const params = new URLSearchParams({

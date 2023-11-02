@@ -13,7 +13,7 @@
         <form action="/user-topic" id="autoform" method="post" style="display:flex; flex-direction:column">
             <div class="mb-3" style="align-items:center">
                 <input class="form-control col-3 mb-3" list="categorydata" id="categories" name="category" size="50" autocomplete="off" placeholder="Type and choose a topic."/>
-                <input class="form-control col-3 mb-3" list="topicdata" id="topics" name="topic" size="50" autocomplete="off" placeholder="Type and choose and article." />
+                <input class="form-control col-3 mb-3" list="topicdata" id="topics" name="topic" size="50" autocomplete="off" placeholder="Type and choose an article." />
                 <input class="btn btn-outline-success col-1.5 mb-3" type="submit" value="Submit">
             </div>
         </form>
@@ -39,9 +39,13 @@
         <div class="row  d-flex flex-wrap justify-content-center">
             <div class="card col-lg-8 col-md-8 col-sm-10">
                 <div class="card-body">
-                    <h1 class="card-title"><%= data[index].Title %></h1>
+                    <div class="card-title-container">
+                        <h1 class="card-title collapsible" style="width:95%"><%= data[index].Title %></h1>
+                    </div>
                     <div class="card-content">
-                        <%- data[index].Sections.section[0].Content %>
+                        <div class="pt-3">
+                            <%- data[index].Sections.section[0].Content %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,6 +70,47 @@
     </datalist>
     
 <% } %>
+
+<style>
+    .card-content {
+      max-height: 0;
+      overflow:hidden;
+      transition: max-height 0.2s ease-out;
+    }
+    </style>
+    
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.parentElement.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+
+    $('input[name=category]').on('change', function() {
+        if(this.value.length > 0)
+           $('input[name=topic]').attr('disabled','disabled');
+        else
+           $('input[name=topic]').removeAttr('disabled');
+    });
+    
+    
+    $('input[name=topic]').on('change', function() {
+        if(this.value.length > 0)
+           $('input[name=category]').attr('disabled','disabled');
+        else
+           $('input[name=category]').removeAttr('disabled');
+    });
+</script>
 
 
 

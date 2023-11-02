@@ -19,7 +19,7 @@ html, body { height: 100% }
     align-items: center;
 }
 
-.card-body h2, .card-body h3, .card-body h4 {
+.card-body div h2, .card-body div h3, .card-body div h4 {
     font-size: large;
 }
 
@@ -27,21 +27,6 @@ html, body { height: 100% }
     font-size: x-large;
 }
 
-.card-body{
-    display:flex;
-    flex-direction: row;
-}
-
-.card-title{
-    align-items: flex-start;
-    width:30%;
-}
-
-.card-content{
-    align-items: flex-end;
-    width: 70%;
-    padding-left: 2rem;
-}
 
 .card{
     margin-bottom: 3rem;
@@ -70,3 +55,24 @@ input {
     text-align:left;
 }
 
+.card-title-container{
+    position: relative;
+}
+
+.collapsible {
+    cursor: pointer;
+}
+
+.collapsible:after {
+content: '\02795'; /* Unicode character for "plus" sign (+) */
+font-size: 13px;
+color: white;
+position: absolute;
+right: 0%;
+top:40%;
+margin-left: 5px;
+}
+
+.active:after {
+content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
